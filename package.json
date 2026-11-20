@@ -1,0 +1,10 @@
+{
+  "name": "smoke-detection-system",
+  "version": "1.0.0",
+  "description": "IoT-Based Smart Smoke Detection and Automated Safety Monitoring System",
+  "scripts": {
+    "install:all": "cd server && npm install && cd ../client && npm install",
+    "server": "cd server && npm start",
+    "client": "cd client && npm run dev"
+  }
+}
