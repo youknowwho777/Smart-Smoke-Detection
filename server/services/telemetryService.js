@@ -52,30 +52,25 @@ const processTelemetry = async (payload) => {
 
   // Evaluate safety status
   let status = 'SAFE';
-  let fanStatus = false;
   let buzzerStatus = false;
   let ledStatus = false;
 
   if (rawAdc >= criticalThreshold) {
     status = 'CRITICAL';
-    fanStatus = true;
     buzzerStatus = true;
     ledStatus = true;
   } else if (rawAdc >= warningThreshold) {
     status = 'WARNING';
-    fanStatus = true;
     buzzerStatus = false;
     ledStatus = true;
   } else {
     status = 'SAFE';
-    fanStatus = false;
     buzzerStatus = false;
     ledStatus = false;
   }
 
-  // If incoming payload has explicit actuator states (e.g. from actual hardware), merge them
+  // If incoming payload has explicit actuator states from ESP32 hardware, merge them
   if (payload.actuators) {
-    if (payload.actuators.fan !== undefined) fanStatus = Boolean(payload.actuators.fan);
     if (payload.actuators.buzzer !== undefined) buzzerStatus = Boolean(payload.actuators.buzzer);
     if (payload.actuators.led !== undefined) ledStatus = Boolean(payload.actuators.led);
   }
@@ -88,7 +83,6 @@ const processTelemetry = async (payload) => {
     rawAdc,
     voltage,
     status,
-    fanStatus,
     buzzerStatus,
     ledStatus,
     isSimulated,
@@ -103,7 +97,7 @@ const processTelemetry = async (payload) => {
       await dataStore.saveAlert({
         deviceId,
         severity: 'CRITICAL',
-        message: `High smoke level detected (${rawAdc} ADC / ${voltage}V). Exhaust fan & buzzer active!`,
+        message: `High smoke level detected (${rawAdc} ADC / ${voltage}V). Piezo buzzer and alert lights active!`,
         sensorValue: rawAdc,
         timestamp
       });
@@ -112,7 +106,7 @@ const processTelemetry = async (payload) => {
       await dataStore.saveAlert({
         deviceId,
         severity: 'WARNING',
-        message: `Smoke level above ${warningThreshold} ADC threshold (${rawAdc} ADC). Ventilation fan triggered.`,
+        message: `Smoke level above ${warningThreshold} ADC threshold (${rawAdc} ADC). Warning light triggered.`,
         sensorValue: rawAdc,
         timestamp
       });

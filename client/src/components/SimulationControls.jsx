@@ -49,7 +49,7 @@ const SimulationControls = ({ isSimRunning = true, onActionSuccess }) => {
             </span>
           </div>
           <p className="text-xs text-slate-400 mt-0.5">
-            Test automated safety thresholds without physical ESP32 hardware
+            Test safety thresholds and automated alarm triggers without physical smoke
           </p>
         </div>
       </div>
@@ -77,7 +77,7 @@ const SimulationControls = ({ isSimRunning = true, onActionSuccess }) => {
               ? 'bg-amber-600 text-white shadow-lg'
               : 'bg-amber-950/60 hover:bg-amber-900/80 text-amber-300 border border-amber-800/80'
           }`}
-          title="Force warning smoke readings (~2300 ADC)"
+          title="Force warning smoke readings (~2300 ADC) - Triggers Warning LED"
         >
           <AlertTriangle className="w-3.5 h-3.5" />
           <span>Force Warning</span>
@@ -91,7 +91,7 @@ const SimulationControls = ({ isSimRunning = true, onActionSuccess }) => {
               ? 'bg-red-600 text-white shadow-lg'
               : 'bg-red-950/60 hover:bg-red-900/80 text-red-300 border border-red-800/80'
           }`}
-          title="Force critical danger readings (~3400 ADC) - Triggers Fan, Buzzer, LED"
+          title="Force critical danger readings (~3400 ADC) - Triggers Buzzer & Alert Light"
         >
           <Flame className="w-3.5 h-3.5" />
           <span>Force Critical</span>

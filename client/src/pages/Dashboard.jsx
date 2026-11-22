@@ -19,7 +19,6 @@ const Dashboard = () => {
     rawAdc: 412,
     voltage: 0.33,
     status: 'SAFE',
-    fanStatus: false,
     buzzerStatus: false,
     ledStatus: false,
     isSimulated: true
@@ -91,7 +90,7 @@ const Dashboard = () => {
 
   return (
     <div className="space-y-6 max-w-7xl mx-auto">
-      {/* Simulation Controls Banner for Demoing */}
+      {/* Simulation Controls Banner for Testing & Hardware Demos */}
       <SimulationControls 
         isSimRunning={thresholds.simulationEnabled} 
         onActionSuccess={loadDashboardData} 
@@ -107,9 +106,8 @@ const Dashboard = () => {
         />
       </div>
 
-      {/* Actuator Indicators */}
+      {/* Hardware Actuator Indicators: Buzzer & Alert Light */}
       <ActuatorCardsGrid 
-        fan={latestData.fanStatus} 
         buzzer={latestData.buzzerStatus} 
         led={latestData.ledStatus} 
       />

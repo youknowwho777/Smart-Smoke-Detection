@@ -76,7 +76,6 @@ const DeviceManagement = () => {
           voltage: 1.57
         },
         actuators: {
-          fan: false,
           buzzer: false,
           led: false
         }

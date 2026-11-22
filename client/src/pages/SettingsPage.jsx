@@ -149,7 +149,7 @@ const SettingsPage = () => {
             Safety Trigger Thresholds
           </h3>
           <p className="text-xs text-slate-500 mt-0.5">
-            The system compares incoming 12-bit ADC values (0–4095) against these levels to activate fans and alarms.
+            The system compares incoming 12-bit ADC values (0–4095) against these levels to activate the buzzer alarm and alert lights.
           </p>
         </div>
 
@@ -177,7 +177,7 @@ const SettingsPage = () => {
               required
             />
             <p className="text-[11px] text-slate-400">
-              Triggers ventilation fan and issues WARNING alert. Default: 2000 ADC.
+              Triggers visual warning lights and issues WARNING alert. Default: 2000 ADC.
             </p>
           </div>
 
@@ -204,7 +204,7 @@ const SettingsPage = () => {
               required
             />
             <p className="text-[11px] text-slate-400">
-              Engages exhaust fan, buzzer, and alert LED. Default: 3000 ADC.
+              Engages emergency piezo buzzer and flashing alert lights. Default: 3000 ADC.
             </p>
           </div>
         </div>

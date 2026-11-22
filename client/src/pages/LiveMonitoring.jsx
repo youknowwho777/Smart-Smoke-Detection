@@ -192,14 +192,14 @@ const LiveMonitoring = () => {
             <h3 className="text-3xl font-black tracking-tight">{status}</h3>
             <p className="text-xs font-medium mt-1 opacity-80">
               {status === 'CRITICAL'
-                ? 'Hazardous smoke concentration detected! Exhaust fans on high.'
+                ? 'Hazardous smoke concentration detected! Audio-visual alarms active.'
                 : status === 'WARNING'
-                ? 'Elevated smoke detected above advisory threshold.'
+                ? 'Elevated smoke detected above advisory threshold. Warning lights active.'
                 : 'Sensor levels indicate normal, clean atmospheric conditions.'}
             </p>
           </div>
           <div className="text-xs font-bold">
-            Actuators Active: {latest?.fanStatus ? 'Fan' : ''} {latest?.buzzerStatus ? '• Buzzer' : ''} {latest?.ledStatus ? '• LED' : ''} {!latest?.fanStatus && !latest?.buzzerStatus && !latest?.ledStatus ? 'None (Nominal)' : ''}
+            Hardware Actuators Active: {latest?.buzzerStatus ? 'Buzzer Alarm ' : ''} {latest?.ledStatus ? '• Alert Lights' : ''} {!latest?.buzzerStatus && !latest?.ledStatus ? 'None (Nominal Standby)' : ''}
           </div>
         </div>
       </div>

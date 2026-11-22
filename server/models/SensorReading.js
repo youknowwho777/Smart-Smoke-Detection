@@ -25,10 +25,6 @@ const sensorReadingSchema = new mongoose.Schema(
       enum: ['SAFE', 'WARNING', 'CRITICAL'],
       default: 'SAFE'
     },
-    fanStatus: {
-      type: Boolean,
-      default: false
-    },
     buzzerStatus: {
       type: Boolean,
       default: false
